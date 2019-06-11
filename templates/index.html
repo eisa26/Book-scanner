@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block anchor %}
+        {% if status == "Loggedout" %}
+            <a class="nav-link " href='{{ url_for('login') }}' xmlns="http://www.w3.org/1999/html">
+               Login
+            </a>
+        {% else %}
+            <a class="nav-link " href='{{ url_for('logout') }}'>
+                Logout <strong>{{ user_email }}</strong>
+            </a>
+        {% endif %}
+
+{% endblock %}
+
+{% block body %}
+    <br>
+    <p>
+        Welcome to <strong>Book search</strong> Find books with just one search
+Since 1997, BookFinder has made it easy to find any book at the best price. Whether you want the cheapest reading copy or a specific collectible edition, with BookFinder, you'll find just the right book.
+ Booksearch.com searches the inventories of over 4,500 booksellers worldwide, accessing of books in just one simple step.
+To find original editions, please select "Show more options" to refine your search by publication year .
+Save big this semester by using Booksearch.com to find the cheapest textbooks. Search by ISBN to ensure that you find the exact edition, or you can search by author, title and publication year.
+    </p>
+    <p class="mt-5 mb-3 text-muted">© 2019 Eisa</p>
+
+{% endblock %}

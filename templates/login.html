@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+
+
+{% block body %}
+
+    {% if error_message %}
+        <div class="alert alert-danger" role="alert">
+            <h4 class="alert-heading">Error Occurred!!</h4><br>
+            <p>
+                {{ error_message }}
+            </p>
+        </div>
+
+    {% elif message %}
+        <div class="alert alert-success" role="alert">
+            <h4 class="alert-heading">Registered!!</h4><br>
+            <p>
+                You've successfully registered for Book Sansar. Please login with your credentials.
+            </p>
+        </div>
+    {% endif %}
+
+    <div class="text-center">
+        {% if work =='Login' %}
+            <form class="form-signin" action="{{ url_for('search') }} " method="post">
+            <h1 class="h3 mb-3 font-weight-normal"> Please Login</h1>
+
+        {% else %}
+            <form class="form-signin" action="{{ url_for('login') }}" method="post">
+            <h1 class="h3 mb-3 font-weight-normal"> Please Register</h1>
+        {% endif %}
+
+
+            <label class="sr-only" for="inputEmail"> Email Address</label>
+            <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required="" autofocus="" name="Email">
+            <label class="sr-only" for="inputPassword"> Password </label>
+            <input id="inputPassword" class="form-control" placeholder="Password" required="" type="password" name="Password">
+
+            <button class="btn btn-lg btn-primary btn-block" type="submit"> {{ work }} </button>
+
+            {% if work=="Login" %}
+                <p> Don't have a account ?
+                    <a href="{{ url_for('register') }}">Register</a>
+                </p>
+            {% endif %}
+
+            <p class="mt-5 mb-3 text-muted">© 2019 Eisa</p>
+
+        </form>
+
+    </div>
+
+{% endblock %}
